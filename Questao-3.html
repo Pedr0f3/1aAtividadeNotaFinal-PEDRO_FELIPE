@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questao 3</title>
+
+    <style>
+        body {
+            background-color: #181818;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        form {
+            width: 90%;
+            max-width: 650px;
+            background-color: #0e1010;
+            padding: 20px;
+            border: 1px solid #ffffff4d;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px white;
+            margin-top: 10px;
+        }
+
+        fieldset {
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        label, input, textarea{
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            color: white;
+        }
+
+        input, textarea{
+            background-color: rgba(0,0,0,.3);
+            border: 2px solid transparent;
+            border-bottom-color: #bbb;
+            padding: 20px;
+            margin: 10px 0 50px;
+            outline: 0;
+        }
+
+        input:focus, textarea:focus{
+            border-bottom: 2px solid gray;
+            background-color: rgb(41, 41, 41);
+        }
+
+        legend{
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: beige;
+            font-size: 30px;
+        }
+
+        #btn{
+            background-color: #2a2727;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+        }
+
+        #aviso {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <form  action="" autocomplete="off">
+        <fieldset>
+            <legend>Formulário de contato</legend>
+
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required placeholder="Digite um email válido">
+
+            <label for="mensagem">Mensagem</label>
+            <textarea name="mensagem" id="mensagem" rows="5" required minlength="1" placeholder="Fale sobre você"></textarea>
+
+            <button id="btn" onclick="validarEnvio()">Enviar</button>
+            <p id="aviso"></p>
+        </fieldset>
+    </form>
+
+    <script>
+        function validarEnvio() {
+            let email = document.getElementById('email').value;
+            let nome = document.getElementById('nome').value;
+            let mensagem = document.getElementById('mensagem').value;
+
+            const emailRegex =/^[^@]+@[^@]+$/;
+            const nomeRegex = /^[A-Za-zÀ-ÿ\s]+$/;
+
+            if (!nomeRegex.test(nome)) {
+                document.getElementById('aviso').innerHTML = "Erro no campo 'Nome'";
+                document.getElementById('aviso').style.color = 'red';
+            } else if (!emailRegex.test(email)) {
+                document.getElementById('aviso').innerHTML = "Erro no campo 'Email'";
+                document.getElementById('aviso').style.color = 'red';
+            } else if (!nomeRegex.test(mensagem)) {
+                document.getElementById('aviso').innerHTML = "Erro no campo 'Mensagem'";
+                document.getElementById('aviso').style.color = 'red';
+            } else {
+                alert('Formulário enviado com Sucesso')
+            }
+        }
+    </script>
+
+</body>
+</html>
